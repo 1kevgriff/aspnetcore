@@ -16,7 +16,7 @@ export class DefaultHttpClient extends HttpClient {
     public constructor(logger: ILogger) {
         super();
 
-        if (typeof fetch !== "undefined" || Platform.isNode) {
+        if ((typeof fetch !== "undefined" && typeof AbortController !== "undefined") || Platform.isNode) {
             this.httpClient = new FetchHttpClient(logger);
         } else if (typeof XMLHttpRequest !== "undefined") {
             this.httpClient = new XhrHttpClient(logger);
