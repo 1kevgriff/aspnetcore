@@ -20,7 +20,7 @@ export class FetchHttpClient extends HttpClient {
         super();
         this.logger = logger;
 
-        if (typeof fetch === "undefined" || typeof AbortController === "undefined") {
+        if (typeof fetch === "undefined") {
             // In order to ignore the dynamic require in webpack builds we need to do this magic
             // @ts-ignore: TS doesn't know about these names
             const requireFunc = typeof __webpack_require__ === "function" ? __non_webpack_require__ : require;
